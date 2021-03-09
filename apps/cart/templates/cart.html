@@ -5,9 +5,25 @@
 {% block content %}
 <h1 class='title'>Cart</h1>
 
-<p>
-    this is cart page..
-</p>
+{% if cart %}
+
+{% for item in cart %}
+
+{% with product=item.product %}
+
+<p>{{ product.title }}</p>
+
+<button @click="removeProduct({{ product.id }})">remove from cart</button>
+
+{% endwith %}
+
+{% endfor %}
+
+
+{% else %}
+<p>Your car is empty !!!</p>
+
+{% endif %}
 
 
 {% endblock %}
